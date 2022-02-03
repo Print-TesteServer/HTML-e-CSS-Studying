@@ -1,34 +1,130 @@
-<!DOCTYPE html>
-<html lang="pt_br">
+<!doctype html> <!--Espesifica o código HTML-->
+<html lang = "PT-BR"> <!--Linguagem do Site-->
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title></title>
-
+    <head> <!--Cabeça do código-->
+        <Meta charset = "UTF-8"> <!--Caracteres Especiais-->
+        <title> Curso </title> <!--Titulo-->
     </head>
+
     <body>
+        <h1> Matheus </h1> <!--Nivel de Titulo-->
+        <h2> Estudos </h2>
+        <a href="https://github.com/Print-TesteServer"> GITHUB </a> <!--para ir pro Site-->
+    </body>
 
-        <div id= "page-home">
-            <div class="content">
-                <header>
-                 <img src="" alt="Logomarca">
-    
-                 <a href="http://github.com?Print-TesteServer">
-                    <span></span>
-                    </a>
-                </header>
-    
-                <main>
-                <h1 class="red"></h1>
-    
-                <p></p>
-    
-                <a href="#"><span></span><strong></strong></a>
-                      
-                </main>
-    
-            </div>
-        </div>
+    <p> </p> <!--Paragrafos-->
+    <ul> </ul> <!--Listas Não Ordenadas-->
+    <li> </li> <!--Lista -->
+    <ol> </ol> <!--Listas Ordenadas-->
+    <strong> ARROZ </strong> <!--Negrito-->
+    <a> </a> <!--Tag de link-->
+    <div> </div> <!--Caixa de organização-->
+    <article> </article> <!--Artigo (tag especifica conteúdo independente e autocontido.)-->
+    <imo SRC=" " alt = ""> </imo> <!--Para imagem-->
+    <p style="color:red;">This is a red paragraph.</p> <!--Adiciona estilos a um elemento, como cor, fonte, tamanho, etc.-->
+    <hr> <!--Separa o conteudo-->
+    <br> <br> <!--Quebra a Linha = /n-->
+    <pre> <!-- Respeita o modo que o texto foi escrito-->
+        My Bonnie lies over the ocean.
+      
+        My Bonnie lies over the sea.
+      
+        My Bonnie lies over the ocean.
+      
+        Oh, bring back my Bonnie to me.
+    </pre>
+    <h1 style="background-color:powderblue;">This is a heading</h1> <!--Muda a cor de fundo-->
+    <p style="background-color:tomato;">This is a paragraph.</p>
+    <h1 style="color:blue;">This is a heading</h1> <!-- Muda a cor do texto-->
+    <p style="color:red;">This is a paragraph.</p>
+    <h1 style="font-family:verdana;">This is a heading</h1> <!--Muda a fonte do texto-->
+    <p style="font-family:courier;">This is a paragraph.</p>
+    <h1 style="font-size:300%;">This is a heading</h1> <!--Muda o tamanho do texto-->
+    <p style="font-size:160%;">This is a paragraph.</p>
+    <h1 style="text-align:center;">Centered Heading</h1> <!--Alinhamento de texto-->
+    <p style="text-align:center;">Centered paragraph.</p>
 
+    <article>
+        <h2>Google Chrome</h2>
+        <p>Google Chrome is a web browser developed by Google, released in 2008..
+            Chrome is the world's most popular web browser today"</p>
+    </article>
+
+    <article>
+        <h2>Mozilla Firefox</h2>
+        <p>Mozilla Firefox is an open-source web browser developed by Mozilla. Firefox has been the second most popular web browser since January, 2018.</p>
+    </article>
+        
+    <article>
+        <h2>Microsoft Edge</h2>
+        <p>Microsoft Edge is a web browser developed by Microsoft, released in 2015. Microsoft Edge replaced Internet Explorer.</p>
+    </article>
+
+    <section> <!--seção em um documento.-->
+        <h1>WWF</h1>
+        <p>The World Wide Fund for Nature (WWF) is an international organization working on issues regarding the conservation, research and restoration of the environment, formerly named the World Wildlife Fund. WWF was founded in 1961.</p>
+        </section>
+        
+        <section>
+        <h1>WWF's Panda symbol</h1>
+        <p>The Panda has become the symbol of WWF. The well-known panda logo of WWF originated from a panda named Chi Chi that was transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.</p>
+    </section>
+
+    <footer> <!--Rodapé-->
+        <p>Author: Hege Refsnes</p>
+        <p><a href="mailto:hege@example.com">hege@example.com</a></p>
+    </footer>
+
+    <p>My family and I visited The Epcot center this summer. The weather was nice, and Epcot was amazing! I had a great summer together with my family!</p>
+
+    <aside><!--elemento define algum conteúdo além do conteúdo em que é colocado (como uma barra lateral).-->
+    <h4>Epcot Center</h4>
+    <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
+    </aside>
+
+    <figure> <!--ilustrações, diagramas, fotos, listagens de código etc.-->
+        <img src="pic_trulli.jpg" alt="Trulli">
+        <figcaption>Fig1. - Trulli, Puglia, Italy.</figcaption>
+      </figure>
+
+    <form> <!--Formulário HTML para entrada do usuário-->
+        .
+        form elements
+        .
+    </form>
+
+    <form>
+        <label for="fname">First name:</label><br> <!--define um rótulo para muitos elementos de formulário.-->
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname">
+    </form>
+    
+    <p>Choose your favorite Web language:</p>
+
+    <form>
+        <input type="radio" id="html" name="fav_language" value="HTML"> <!--Um formulário com botões de opção-->
+        <label for="html">HTML</label><br>
+        <input type="radio" id="css" name="fav_language" value="CSS">
+        <label for="css">CSS</label><br>
+        <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+        <label for="javascript">JavaScript</label>
+    </form>
+
+    <form>
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"> <!--Um formulário com caixas de seleção-->
+        <label for="vehicle1"> I have a bike</label><br>
+        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+        <label for="vehicle2"> I have a car</label><br>
+        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+        <label for="vehicle3"> I have a boat</label>
+      </form>
+
+      <form action="/action_page.php">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" value="John"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" value="Doe"><br><br>
+        <input type="submit" value="Submit"> <!--Um formulário com um botão de envio-->
+      </form>
 </html>
