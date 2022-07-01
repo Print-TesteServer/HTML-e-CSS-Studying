@@ -1,2 +1,2 @@
-# Site-Teste
-Teste de site criado para divulgar meus projetos.
+# Estudando HTML e CSS
+Estudos, anotações e sites de teste
