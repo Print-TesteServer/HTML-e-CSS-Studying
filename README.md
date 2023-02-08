@@ -3,4 +3,4 @@
 - Anotações
 - Sites 
 - Testes
-- CHATGPT
+- ChatGPT
