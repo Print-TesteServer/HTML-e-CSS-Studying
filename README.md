@@ -1,2 +1,5 @@
-# Estudando HTML e CSS
-Estudos, anotações e sites de teste
+# Estudando HTML, CSS e javascript
+- Estudos
+- Anotações
+- Sites 
+- Testes
