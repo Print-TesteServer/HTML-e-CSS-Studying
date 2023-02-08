@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Portfólio Animado com Fundo de Espaço</title>
+    <style>
+      /* Estilos gerais */
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-family: sans-serif;
+      }
+      canvas {
+        background-color: black;
+        display: block;
+      }
+      
+      /* Estilos do portfólio */
+      .container {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .portfolio {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+      }
+      .portfolio h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+      .portfolio p {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+      .portfolio a {
+        background-color: dodgerblue;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 18px;
+        transition: all 0.2s ease-in-out;
+      }
+      .portfolio a:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <div class="container">
+      <div class="portfolio">
+        <h1>Seu Nome Aqui</h1>
+        <p>Breve descrição sobre você e suas habilidades</p>
+        <a href="#">Veja meu trabalho</a>
+      </div>
+    </div>
+    <script>
+      // Variáveis
+      let canvas = document.getElementById("canvas");
+      let ctx = canvas.getContext("2d");
+      let stars = [];
+      let numStars = 1000;
+      let maxRadius = 3;
+      let minRadius = 1;
+      
+      // Definir tamanho do canvas
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      // Gerar as estrelas
+      for (let i = 0; i < numStars; i++) {
+        let x = Math.floor(Math.random() * canvas.width);
+        let y = Math.floor(Math.random() * canvas.height);
+        let radius = Math.random() * (maxRadius - minRadius) + minRadius;
+        stars.push({
+          x: x,
+          y: y,
+          radius: radius,
+          xSpeed: (Math.random() - 0.5) * 2,
+          ySpeed: (Math.random() - 0.5) * 2
+        });
+      }
+      
+      // Desenhar as estrelas
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < numStars; i++) {
+          let star = stars[i];
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
+          ctx.fillStyle = "white";
+          ctx.fill();
+          
+          star.x += star.xSpeed;
+          star.y += star.ySpeed;
+          
+          if (star.x < 0 || star.x > canvas.width) {
+            star.xSpeed = -star.xSpeed;
+          }
+          
+          if (star.y < 0 || star.y > canvas.height) {
+            star.ySpeed = -star.ySpeed;
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      
+      draw();
+    </script>
+  </body>
+</html>

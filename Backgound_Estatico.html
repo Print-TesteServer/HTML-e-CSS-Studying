@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Animação do Espaço</title>
+    <style>
+      /* Estilos gerais */
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      canvas {
+        background-color: black;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      // Variáveis
+      let canvas = document.getElementById("canvas");
+      let ctx = canvas.getContext("2d");
+      let stars = [];
+      let numStars = 1000;
+      let maxRadius = 3;
+      let minRadius = 1;
+      
+      // Definir tamanho do canvas
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      // Gerar as estrelas
+      for (let i = 0; i < numStars; i++) {
+        let x = Math.floor(Math.random() * canvas.width);
+        let y = Math.floor(Math.random() * canvas.height);
+        let radius = Math.random() * (maxRadius - minRadius) + minRadius;
+        stars.push({ x, y, radius });
+      }
+      
+      // Função de desenho
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < numStars; i++) {
+          let star = stars[i];
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
+          ctx.fillStyle = "white";
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+      
+      // Iniciar a animação
+      draw();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: black;
+      }
+      canvas {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="space"></canvas>
+    <script>
+      // Código JavaScript para animação de estrelas
+      const canvas = document.getElementById("space");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const ctx = canvas.getContext("2d");
+
+      function Star(x, y, radius, color) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.velocity = {
+          x: (Math.random() - 0.5) * 20,
+          y: 3
+        };
+        this.friction = 0.8;
+        this.gravity = 1;
+      }
+
+      Star.prototype.draw = function() {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = "white";
+        ctx.shadowBlur = 20;
+        ctx.fill();
+        ctx.closePath();
+        ctx.restore();
+      };
+
+      Star.prototype.update = function() {
+        this.x += this.velocity.x;
+        this.y += this.velocity.y;
+        this.velocity.x *= this.friction;
+        this.velocity.y += this.gravity;
+
+        if (this.y + this.radius >= canvas.height) {
+          this.velocity.y = -this.velocity.y * this.friction;
+          this.shatter();
+        }
+
+        if (this.x + this.radius >= canvas.width || this.x - this.radius <= 0) {
+          this.velocity.x = -this.velocity.x;
+        }
+
+        this.draw();
+      };
+
+      Star.prototype.shatter = function() {
+        this.radius -= 3;
+        for (let i = 0; i < 8; i++) {
+          miniStars.push(new MiniStar(this.x, this.y, 2));
+        }
+      };
+
+      function MiniStar(x, y, radius, color) {
+        Star.call(this, x, y, radius, color);
+        this.velocity = {
+          x: randomIntFromRange(-5, 5),
+          y: randomIntFromRange(-15, 15)
+        };
+        this.friction = 0.8;
+        this.gravity= 0.1;
+        this.ttl = 100;
+        this.opacity = 1;
+        }
+        MiniStar.prototype.draw = function() {
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+    ctx.fill();
+    ctx.closePath();
+    ctx.restore();
+  };
+
+  MiniStar.prototype.update = function() {
+    this.x += this.velocity.x;
+    this.y += this.velocity.y;
+    this.velocity.x *= this.friction;
+    this.velocity.y += this.gravity;
+    this.ttl -= 1;
+    this.opacity -= 1 / this.ttl;
+    this.draw();
+  };
+
+  function randomIntFromRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  function randomColor(colors) {
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+
+  const colors = ["#ffffff", "#ffe9c4", "#d4fbff"];
+
+  let stars = [];
+  let miniStars = [];
+  let backgroundStars = [];
+
+  for (let i = 0; i < 150; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    const radius = Math.random() * 3;
+    backgroundStars.push(new Star(x, y, radius, "white"));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    backgroundStars.forEach(backgroundStar => {
+      backgroundStar.draw();
+    });
+    stars.forEach((star, index) => {
+      star.update();
+      if (star.radius <= 0) {
+        stars.splice(index, 1);
+      }
+    });
+
+    miniStars.forEach((miniStar, index) => {
+      miniStar.update();
+      if (miniStar.ttl == 0) {
+        miniStars.splice(index, 1);
+      }
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  canvas.addEventListener("click", function(event) {
+    const x = event.clientX;
+    const y = event.clientY;
+    const radius = 15;
+    const color = randomColor(colors);
+    stars.push(new Star(x, y, radius, color));
+  });
+
+  animate();
+</script>
+  </body>
+</html>
